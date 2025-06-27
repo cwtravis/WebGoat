@@ -87,6 +87,13 @@ public class SqlInjectionLesson9 implements AssignmentEndpoint {
           .output("<br><span class='feedback-negative'>" + e.getMessage() + "</span>")
           .build();
     }
+
+      String queryInjection =
+              "SELECT * FROM employees WHERE last_name = '"
+                      + name
+                      + "' AND auth_tan = '"
+                      + auth_tan
+                      + "'";
   }
 
   private int getSqlInt(Connection connection, String query) throws SQLException {
