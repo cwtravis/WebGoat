@@ -53,6 +53,14 @@ public class SqlInjectionLesson9 implements AssignmentEndpoint {
             + "' AND auth_tan = '"
             + auth_tan
             + "'";
+
+      String queryInjection2 =
+              "SELECT * FROM employees WHERE last_name = '"
+                      + name
+                      + "' AND auth_tan = '"
+                      + auth_tan
+                      + "'";
+
     try (Connection connection = dataSource.getConnection()) {
       // V2019_09_26_7__employees.sql
       int oldMaxSalary = this.getMaxSalary(connection);
@@ -87,6 +95,8 @@ public class SqlInjectionLesson9 implements AssignmentEndpoint {
           .output("<br><span class='feedback-negative'>" + e.getMessage() + "</span>")
           .build();
     }
+
+
   }
 
   private int getSqlInt(Connection connection, String query) throws SQLException {
